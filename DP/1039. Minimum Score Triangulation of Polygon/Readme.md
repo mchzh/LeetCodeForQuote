@@ -14,7 +14,7 @@ dp[i][j] = min{dp[i][k]+A[i][j][k]+dp[k][j]} for k=i+1,...,j-1
 
     1  2
     
- 6         3
+ 6          3
  
     5  4
 
