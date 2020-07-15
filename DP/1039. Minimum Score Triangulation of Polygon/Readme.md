@@ -12,8 +12,10 @@ dp[i][j] = min{dp[i][k]+A[i][j][k]+dp[k][j]} for k=i+1,...,j-1
 ```
 边界条件是区间长度为2时，dp值都是0.
 
-//    1  2
-// 6         3
-//    5  4
+    1  2
+    
+ 6         3
+ 
+    5  4
 
 [Leetcode Link](https://leetcode.com/problems/minimum-score-triangulation-of-polygon)
