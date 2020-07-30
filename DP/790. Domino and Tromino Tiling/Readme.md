@@ -1,4 +1,6 @@
-```when N==0, we need return 0, but in dp , we need make dp[0]=1 for easy to construct formula
+```
+when N==0, we need return 0, but in dp , we need make dp[0]=1 for easy to construct formula
+
 ```
 
 ![Test Image 7](https://s3-lc-upload.s3.amazonaws.com/users/zhengkaiwei/image_1519539268.png)
