@@ -7,3 +7,5 @@ url <- "https://s3-lc-upload.s3.amazonaws.com/users/zhengkaiwei/image_1519539268
 
 ## Alternatively...
 ![](`r url`)
+
+![Test Image 7](https://s3-lc-upload.s3.amazonaws.com/users/zhengkaiwei/image_1519539268.png)
