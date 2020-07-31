@@ -13,3 +13,6 @@ multiset是o(NlogN)的解法，如果使用单调队列，可以优化到o(N)。
 同理，我们维护一个单调递增的deque来获取当前区间的最小值，其中最小值也是deque的队首元素。
 
 注意，当j前进到区间[i,j]无法满足```mx-mn<=limit```时，j的前进就停止，我们要移动i。因此需要将nums[i]从这两个deque中移出。移出的操作就是看队首元素（的index）是否就是i，是的话把这个队首元素弹出就行。同时记得更新mx和mn。
+
+
+[Leetcode Link](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)
