@@ -6,6 +6,6 @@
 
 思路完全类似560，外包转变化而已，类似思想有很多题，需要总结。
 
-类似题目： [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)  [325. Maximum Size Subarray Sum Equals k](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
+类似题目： [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) /  [325. Maximum Size Subarray Sum Equals k](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/)
 
 [Leetcode Link](https://leetcode.com/problems/path-sum-iii/)
