@@ -9,6 +9,7 @@ class Solution {
         areas = new int[N];
         this.rects = rects;
         for (int i = 0; i < N; i++) {
+            // cal the current rec includes how many points
             sum += (rects[i][3]- rects[i][1]+1) * (rects[i][2]- rects[i][0]+1); // wid * hei
             areas[i] = sum;
         }
@@ -36,3 +37,13 @@ class Solution {
  * Solution obj = new Solution(rects);
  * int[] param_1 = obj.pick();
  */
+
+// rand()%M => [0, M-1]
+
+// ---2*2=4----|   ---2*3=6----|   ---1*1=1----|
+// 0                                          M-1
+
+//     11 =>[0, 10] : 7
+    
+//     [4, 10, 11] : increasing sequence with binary search
+//     the first element more and euqal than 7
