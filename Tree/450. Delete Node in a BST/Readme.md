@@ -5,10 +5,10 @@ Recursively find the node that has the same value as the key, while setting the 
 Once the node is found, have to handle the below 4 cases
 
 
-node doesn't have left or right - return null
+1.node doesn't have left or right - return null
 
-node only has left subtree- return the left subtree
+2.node only has left subtree- return the left subtree
 
-node only has right subtree- return the right subtree
+3.node only has right subtree- return the right subtree
 
-node has both left and right - find the minimum value in the right subtree, set that value to the currently found node, then recursively delete the minimum value in the right subtree
+4.node has both left and right - find the minimum value in the right subtree, set that value to the currently found node, then recursively delete the minimum value in the right subtree
