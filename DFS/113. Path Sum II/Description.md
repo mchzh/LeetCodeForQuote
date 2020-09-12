@@ -8,6 +8,7 @@ Example:
 
 Given the below binary tree and sum = 22,
 
+```````
       5
      / \
     4   8
@@ -15,6 +16,7 @@ Given the below binary tree and sum = 22,
   11  13  4
  /  \    / \
 7    2  5   1
+```````
 
 
 Return:
