@@ -12,4 +12,4 @@
 
 同理的分析，我们每向右移动一次i指针，必然也必须向右移动j指针以寻找合适的{i,j}。这就是一个双指针的模式。所以我们用o(n)的时间复杂度就可以探索到所有合适的{i,j}.
 
-[Leetcode Link]{https://leetcode.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted/}
+[Leetcode Link](https://leetcode.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted/)
