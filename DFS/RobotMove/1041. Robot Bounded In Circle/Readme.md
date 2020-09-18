@@ -10,4 +10,4 @@ After first iteration, If robot is not at start position and is facing North, it
 
 Check out some sample instructions and the route of robot after few iterations, for better understanding
 
-(https://assets.leetcode.com/users/images/c0a94239-43e0-4275-89f3-89a5e01e59bb_1600335884.9367726.png)
+![Tux, the Linux mascot](https://assets.leetcode.com/users/images/c0a94239-43e0-4275-89f3-89a5e01e59bb_1600335884.9367726.png)
