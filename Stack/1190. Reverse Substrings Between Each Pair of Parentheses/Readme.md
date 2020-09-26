@@ -29,3 +29,5 @@ abc(def(ghi)k)
 所谓“离开该层的括号”，包括(1)从左往右进入右括号，此时你需要跳转至左括号然后往左读取括号外的内容；(1)从右往做进入左括号，此时你需要跳转至右括号然后往右读取括号外的内容；
 
 同上以上的顺序，我们就可以用o(N)的时间走遍整个字符串。
+
+[LeetCode Link](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/)
