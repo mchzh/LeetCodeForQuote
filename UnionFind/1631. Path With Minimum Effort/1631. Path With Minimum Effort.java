@@ -1,48 +1,81 @@
 class Solution {
-    // https://leetcode.com/problems/swim-in-rising-water/discuss/118204/Java-DFS-and-Union-Find
-    // union find efficiency not so good, consider BFS
-    class UF {
-        int[] parent;
-        public UF(int N) {
-            parent = new int[N];
-            
-            for (int i = 0; i < N; i++) {
-                parent[i] = i;
-            }
-        }
-        public void union(int x, int y) {
-            x = find(x);
-            y = find(y);
-            if (x < y) {
-                parent[y] = x;
-            } else {
-                parent[x] = y;
-            }
-        }
-        
-        public int find(int x) {
-            if (x != parent[x]) {
-                parent[x] = find(parent[x]);
-            }
-            return parent[x];
+    // dp X or bfs or dfs (X)
+    // directly dfs is TLE O(3m*n)
+    int directions[][] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    class Cell {
+        int x;
+        int y;
+        Integer diff;
+        public Cell(int x, int y, Integer diff) {
+            this.x = x;
+            this.y = y;
+            this.diff = diff;
         }
     }
-    // BFS or union find
-    public int swimInWater(int[][] grid) {
-        int N = grid.length;
-        UF uf = new UF(N*N);
-        int time = 0;
-        while ( uf.find(0) != uf.find(N*N-1) ) {
+    public int minimumEffortPath(int[][] heights) {
+        // Dijkstra's Algorithm
+        int row = heights.length, col = heights[0].length;
+        int[][] diffMatrix = new int[row][col];
+        // initilized diffMatirx
+        for (int[] d : diffMatrix) {
+            Arrays.fill(d, Integer.MAX_VALUE);
+        }
+        
+        PriorityQueue<Cell> pq = new PriorityQueue<Cell>((a, b) -> (a.diff.compareTo(b.diff)));
+        boolean[][] visited = new boolean[row][col];
+        diffMatrix[0][0] = 0;
+        pq.offer(new Cell(0, 0, diffMatrix[0][0]));
+        //return backtrack(0, 0, heights, heights.length, heights[0].length, 0);
+        
+        while (!pq.isEmpty()) {
+            Cell curr = pq.poll();
+            visited[curr.x][curr.y] = true;
+            if (curr.x == row-1 && curr.y == col-1) return curr.diff;
             
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    if (grid[i][j] > time) continue;
-                    if (i < N-1 && grid[i+1][j] <= time) uf.union( i*N+j, (i+1)*N+j );
-                    if (j < N-1 && grid[i][j+1] <= time) uf.union( i*N+j, i*N+j+1 );
+            for (int[] d : directions) {
+                int cx = curr.x + d[0];
+                int cy = curr.y + d[1];
+                
+                if (cx >= 0 && cx < row && cy >= 0 && cy < col && ! visited[cx][cy]) {
+                    int currDiff = Math.abs(heights[cx][cy] - heights[curr.x][curr.y]);
+                    int curMax = Math.max(currDiff, curr.diff);
+                    if (diffMatrix[cx][cy] > curMax) {
+                        diffMatrix[cx][cy] = curMax;
+                        pq.offer(new Cell(cx, cy, diffMatrix[cx][cy]));
+                    }
                 }
             }
-            time++;
         }
-        return time-1;
+        return diffMatrix[row-1][col-1];
+    }
+
+    int maxSoFar = Integer.MAX_VALUE;
+
+    int backtrack(int x, int y, int[][] heights, int row, int col, int maxDifference) {
+        if (x == row - 1 && y == col - 1) {
+            maxSoFar = Math.min(maxSoFar, maxDifference);
+            return maxDifference;
+        }
+        int currentHeight = heights[x][y];
+        heights[x][y] = 0;
+        int minEffort = Integer.MAX_VALUE;
+        for (int i = 0; i < 4; i++) {
+            int adjacentX = x + directions[i][0];
+            int adjacentY = y + directions[i][1];
+            if (isValidCell(adjacentX, adjacentY, row, col) && heights[adjacentX][adjacentY] != 0) {
+                int currentDifference = Math.abs(heights[adjacentX][adjacentY] - currentHeight);
+                int maxCurrentDifference = Math.max(maxDifference, currentDifference);
+                if (maxCurrentDifference < maxSoFar) {
+                    int result = backtrack(adjacentX, adjacentY, heights, row, col, maxCurrentDifference);
+                    minEffort = Math.min(minEffort, result);
+                }
+            }
+        }
+        heights[x][y] = currentHeight;
+        return minEffort;
+    }
+
+    boolean isValidCell(int x, int y, int row, int col) {
+        return x >= 0 && x <= row - 1 && y >= 0 && y <= col - 1;
     }
 }
