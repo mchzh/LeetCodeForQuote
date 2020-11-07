@@ -24,7 +24,6 @@ class Solution {
         for (int i = 1; i <= n; i++) {
             for (int t=1; t <= Math.min(i, k); t++) {
                 for (int j = t; j <= i; j++) {
-                    //dp[i][t] = Math.min(dp[i][t], dp[j-1][t-1] + helper(s, j, i));
                     dp[i][t] = Math.min(dp[i][t], dp[j-1][t-1] + count[j][i]);
                 }
             }
