@@ -14,4 +14,9 @@ class Solution {
         int gcd = getGCD(a, b);
         return a/gcd * b /gcd;
     }
+    private int gcd(int a, int b) {
+        if (a == 0)
+            return b;
+        return gcd(b % a, a);
+    }
 }
