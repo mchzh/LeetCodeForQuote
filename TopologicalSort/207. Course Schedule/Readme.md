@@ -6,7 +6,8 @@ BFS的本质就是从入度为零的node开始一层层剥洋葱，过程中新�
 
 dfs关键就是控制被访问的点的状态：
 
-```        if (visited[cur] == 1) return true;
+```        
+        if (visited[cur] == 1) return true;
 
         visited[cur] = 2;
         if (graph.containsKey(cur)) {
