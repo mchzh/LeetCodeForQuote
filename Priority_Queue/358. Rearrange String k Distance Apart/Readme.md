@@ -31,5 +31,8 @@
         }
 ```
 
+相似问题： [767. Reorganize String](https://leetcode.com/problems/reorganize-string/)
+
+[621. Task Scheduler](https://leetcode.com/problems/task-scheduler/)
 
 [Leetcode Link](https://leetcode.com/problems/rearrange-string-k-distance-apart)
