@@ -9,3 +9,5 @@
 2. 如果p[i]=0，且A[i-1][j]==A[i][j]，那么继续维持p[i]=0
 3. 如果p[i]=0，且A[i-1][j]<A[i][j]，那么可以更新p[i]=1
 4. 如果p[i]=0，且A[i-1][j]>A[i][j]，那么整个第j列都不能保留，同时p也不更新。
+
+[Leecode Link](https://leetcode.com/problems/delete-columns-to-make-sorted-ii/)
