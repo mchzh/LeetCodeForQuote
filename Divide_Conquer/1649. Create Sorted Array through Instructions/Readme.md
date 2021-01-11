@@ -13,3 +13,5 @@
 根据数组元素的范围，我们开辟一个计数数组count[100001].如果我们遇到nums[i]，那么就相应的在计数器count[nums[i]]++。于是，对于nums[i]的Count-of-Smaller-Numbers-Before-Self，本质上就是求count数组在区间[1,nums[i]-1]上的和。对于一个mutable array，动态地求区间和，那么BIT或者线段树是最合适的数据结构。
 
 BIT的模板相对更简单一些。简单的说，我们将1-index的原数组nums，做一些变换映射到1-index的新数组bitArray.我们对于nums的单点更新、区间求和，都可以映射成在bitArray上的一些操作。BIT提供了两个API，分别是update(i,delta)和querySum(i,j)，前者是用来单点更新nums[i]+=delta，后者是用来求区间nums[i:j]的和。
+
+类似题目有：[315.Count-of-Smaller-Numbers-After-Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) [327.Count-of-Range-Sum](https://leetcode.com/problems/count-of-range-sum/)
