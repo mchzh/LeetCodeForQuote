@@ -9,3 +9,5 @@
 反之如果k>sum，必然第一位就是V，我们接下来求h个H和v-1个V组成的第(k-sum)-th permutation。
 
 递归的终止条件就是当h为零的时候，一定输出V；或者当v为零的时候，一定输出H。
+
+[Leetcode Link](https://leetcode.com/problems/kth-smallest-instructions/)
