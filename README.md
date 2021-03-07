@@ -144,7 +144,7 @@
 [1591.Strange-Printer-II](https://github.com/wisdompeak/LeetCode/tree/master/BFS/1591.Strange-Printer-II) (H-)  
 * ``Dijkstra (BFS+PQ)``   
 [743.Network-Delay-Time](https://github.com/mchzh/LeetCodeForQuote/tree/master/BFS/Dijkstra/743.%20Network%20Delay%20Time) (H)  
-[1631. Path With Minimum Effort](https://github.com/mchzh/LeetCodeForQuote/tree/master/BFS/Dijkstra/1631.%20Path%20With%20Minimum%20Effort) (H) 
+[1631. Path With Minimum Effort](https://github.com/mchzh/LeetCodeForQuote/tree/master/BFS/Dijkstra/1631.%20Path%20With%20Minimum%20Effort) (H)   
 [407.Trapping-Rain-Water-II](https://github.com/wisdompeak/LeetCode/tree/master/BFS/407.Trapping-Rain-Water-II) (H)      
 [778.Swim-in-Rising-Water](https://github.com/wisdompeak/LeetCode/tree/master/BFS/778.Swim-in-Rising-Water) (H)    
 [505.The-Maze-II](https://github.com/wisdompeak/LeetCode/tree/master/BFS/505.The-Maze-II) (H)  
