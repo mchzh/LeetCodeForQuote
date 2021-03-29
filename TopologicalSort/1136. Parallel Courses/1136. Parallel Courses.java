@@ -1,5 +1,6 @@
 class Solution {
     // https://leetcode.com/problems/parallel-courses/discuss/344808/Java-Topological-Sort-%2B-BFS-w-comment-and-analysis.
+    // https://leetcode.com/problems/parallel-courses/discuss/?currentPage=1&orderBy=most_relevant&query=Dynamic
     // toplogical sort + BFS or DFS
     public int minimumSemesters(int N, int[][] relations) {
         Map<Integer, List<Integer>> g = new HashMap<>();
