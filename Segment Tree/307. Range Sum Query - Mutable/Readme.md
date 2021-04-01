@@ -112,5 +112,27 @@ void modifyTree(SegmentTree* node, int pos, int val)
             return queryTree(root->left,a,mid)+queryTree(root->right,mid+1,b);
     }
 
+#### Segment Tree - Simple
+此题是应用线段树的典型例子。线段树的模板有很多种写法，这里来讲一下最基础的版本。
+
+首先定义线段树节点
+```cpp
+    class SegTreeNode
+    {
+        public:
+        SegTreeNode* left;
+        SegTreeNode* right;
+        int start, end;
+        int info;        
+        SegTreeNode(int a, int b):start(a),end(b),info(0),left(NULL),right(NULL){}
+    };
+```
+其中的info是存储我们想在线段树加载的信息，在这里，存储的是下面所有叶子节点的数值的和。
+
+第一个常用的API就是初始化：```void init(SegTreeNode* node, int a, int b)```，其意义是对以node为根节点的线段树进行节点的赋值，在其下面构造b-a+1个叶子节点，每个节点（id）对应的元素值从全局变量nums[id]里面读取和写入。显然，这种写法下，初始化只要一步：```init(root, 0, n-1)```.
+
+第二个API就是单点修改：```void updateSingle(SegTreeNode* node, int id, int val)```，其意义是对以node为根节点的线段树时，修改nums[id]所对应的叶子节点的info为val。
+
+第三个API就是区间查询：```int queryRange(SegTreeNode* node, int a, int b)```，其意义是对以node为根节点的线段树时，查询nums[a:b]区间所对应的所有叶子节点的info的和
 
 [Leetcode Link](https://leetcode.com/problems/range-sum-query-mutable)
