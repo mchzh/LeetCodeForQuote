@@ -6,7 +6,10 @@ class Solution {
         boolean[][] visited = new boolean[m][n];
         for (int i = 0; i < m; i++) 
             for (int j = 0; j < n; j++)
-                if (i == 0 || i == m-1 || j == 0 || j == n-1) pq.offer(new int[] {heightMap[i][j], i, j});
+                if (i == 0 || i == m-1 || j == 0 || j == n-1) {
+                    pq.offer(new int[] {heightMap[i][j], i, j});
+                    visited[i][j] = true;
+                }
         
         int curh = Integer.MIN_VALUE;
         int rets = 0;
@@ -16,8 +19,6 @@ class Solution {
             int h = cur[0];
             int x = cur[1];
             int y = cur[2];
-            if (visited[x][y]) continue;
-            visited[x][y] = true;
             if (h > curh) curh = h;
         
             rets += curh-h;
@@ -27,6 +28,7 @@ class Solution {
                 if (cx < 0 || cx >= m || cy < 0 || cy >= n) continue;
                 if (visited[cx][cy]) continue;
                 pq.offer(new int[] {heightMap[cx][cy], cx, cy});
+                visited[cx][cy] = true;
             }
         }
         return rets;
