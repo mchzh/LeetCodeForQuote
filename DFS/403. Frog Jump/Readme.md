@@ -6,5 +6,7 @@
 
 以上的算法会LTE。如果思考进一步优化的算法，那显然就是记忆化，把每次搜索过的失败都记录下来。很容易想到，将已经探索过的{pos,jump}共同作为一个key存在一个集合FailureSet里，表明这个状态是失败的，以后DFS过程遇到这个状态就直接返回false。"
 
+dp是需要定义2darray，代表当前位置是跳跃多少步而得来的，进而可以推出对下一个有效位置的跳跃步数， curs-1, curs, curs+1, dp[pos][step]
+
 
 [Leetcode Link](https://leetcode.com/problems/frog-jump)
