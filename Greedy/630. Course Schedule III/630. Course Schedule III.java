@@ -18,3 +18,9 @@ class Solution {
         return pq.size();
     }
 }
+// +1 +0
+// 1-----
+// 2     ------------  
+// 3     ------deadline
+//  s                   e
+// 4               ---------
