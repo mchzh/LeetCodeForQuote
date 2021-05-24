@@ -28,7 +28,7 @@ class Solution {
             
             for (int d = 0; d < 1024; d++) {
                 //v is not in set
-                dp[i][d] = Math.min(dp[i][d], minCost + (totalCnt[i]-count[i][x]));
+                dp[i][d] = Math.min(dp[i][d], minCost + (totalCnt[i]-count[i][d^x]));
                 // v is in set
                 for (int j = i; j < n; j += k) {
                     int v = nums[j];
