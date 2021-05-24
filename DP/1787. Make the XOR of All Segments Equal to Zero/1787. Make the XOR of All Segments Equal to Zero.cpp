@@ -27,7 +27,7 @@ public:
             }
             
             for (int d = 0; d < 1024; d++) {
-                dp[i][d] = minCost + (totalCnt[i]-count[i][x]);
+                dp[i][d] = minCost + (totalCnt[i]-count[i][d^x]);
                 
                 for (int j = i; j < n; j += k) {
                     int v = nums[j];
