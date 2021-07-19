@@ -10,4 +10,4 @@
 
 注意，因为cnt的引入，我们在遍历Trie的时候，不应该去访问那些cnt为零的节点。
 
-[1707 explanation link]()
+[1707 explanation link](https://github.com/mchzh/LeetCodeForQuote/tree/master/Trie/1707.%20Maximum%20XOR%20With%20an%20Element%20From%20Array)
