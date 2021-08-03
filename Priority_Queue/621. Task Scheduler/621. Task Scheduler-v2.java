@@ -11,8 +11,7 @@ class Solution {
         for (int c : count) if (c == maxFreq) tail++;
         
         // (maxFreq-1)*n+tail : tasks.size()
-        int areaA = (maxFreq-1)*n+tail;
-        return areaA < tasks.length ? tasks.length : areaA;
+        return Math.max((maxFreq-1)*n+tail, tasks.length);
     }
 }
 
