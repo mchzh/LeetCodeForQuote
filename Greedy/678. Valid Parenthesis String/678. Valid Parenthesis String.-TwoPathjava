@@ -1,0 +1,38 @@
+class Solution {
+    public boolean checkValidString(String s) {
+        // two path
+        // left -> right;
+        int leftopen = 0, count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                leftopen++;
+            } else if (c == ')') {
+                if (leftopen < 1) {
+                    if (count > 0) {
+                        count--;
+                    } else return false;
+                } else leftopen--;
+            } else {
+                count++;
+            }
+        }
+        int rightopen = 0;
+        count = 0;
+        for (int i = s.length()-1; i >= 0; i--) {
+            char c = s.charAt(i);
+            if (c == ')') {
+                rightopen++;
+            } else if (c == '(') {
+                if (rightopen < 1) {
+                    if (count > 0) {
+                        count--;
+                    } else return false;
+                } else rightopen--;
+            } else {
+                count++;
+            }
+        }
+        return true;
+    }
+}
