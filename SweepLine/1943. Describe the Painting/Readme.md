@@ -5,3 +5,6 @@
 当然，我们最终要在结果里去除那些色彩集合为空的区间，很显然，这些区间就对应着sum=0。
 
 如果题目没有这个简化条件，相应的代码见v1。
+
+
+![image](https://user-images.githubusercontent.com/14832268/140620880-69607efd-98ed-4feb-a8cb-c8a7bbc2685c.png)
