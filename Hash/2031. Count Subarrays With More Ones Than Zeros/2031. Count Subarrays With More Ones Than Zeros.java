@@ -1,0 +1,73 @@
+class Solution {
+    // https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros/discuss/1508739/C%2B%2B-DP-O(N)
+    public int subarraysWithMoreZerosThanOnes(int[] nums) {
+        int n = nums.length;
+        long[][] dp = new long[n+1][2];
+        for (int i = 0; i < n+1; i++) {
+            dp[i][0] = 0;
+            dp[i][1] = 0;
+        }
+        
+        Map<Integer, Integer> count = new HashMap<>();
+        count.put(0, 1);
+        int cursum = 0;
+        long mod = (long)(1e9+7);
+        long rets = 0;
+        for (int i = 0; i < n; i++) {
+            int cur = nums[i];
+            cursum += cur == 0 ? -1 : 1;
+            if (count.containsKey(cursum)) dp[i][0] = count.get(cursum);
+            
+            if (cur == 1) {
+                dp[i][1] += 1;
+                if (i-1 >= 0) {
+                    dp[i][1] += dp[i-1][0] + dp[i-1][1];
+                }
+            } else {
+                if (i-1 >= 0) {
+                    long lessone = i - dp[i-1][1] + 1;
+                    dp[i][1] = i+1 - dp[i][0] - lessone;
+                }
+            }
+            
+            //System.out.println(i + " " + dp[i][1] + " " + dp[i][0] + " " + cursum);
+            // dp[i][0] = (dp[i][0]+mod)%mod; // avoid negative
+            // dp[i][1] = (dp[i][1]+mod)%mod;
+            dp[i][0] = (dp[i][0])%mod; 
+            dp[i][1] = (dp[i][1])%mod;
+            rets += dp[i][1];
+            rets %= mod;
+            count.put(cursum, count.getOrDefault(cursum, 0) + 1);
+        }
+        
+        return (int)rets;
+    }
+}
+
+// X X X X X X i
+
+// a[i] = 0;
+// a[i-1]
+
+// a[i] = 1;
+// a[i-1]
+
+
+// 0 0 0 1 1 1 0 1 1 0 | 1
+
+// dp[i][0]: the count of with the same 1 and 0 end with i;
+// dp[i][1]: the count of more 1 than 0 end with i;
+
+// so dp[i][-1]: the count of less 1 than 0 end with i = (i+1) - dp[i][0] - dp[i][1] // total minus all other situation
+    
+// dp[i][0] = how many presum equal;
+
+// 1): a[i] == 1;
+//     dp[i][1] += 1 // itself
+//     dp[i][1] += dp[i-1][0] + dp[i-1][1]
+// 2): a[i] = 0;
+//     dp[i][1] = i+1 - dp[i][0] - dp[i][-1];
+//     how to caculate dp[i][-1]? dpend on i-1 pos situation
+//     end with it will add one more zero for i-1 pos from dp[i-1][0] will be change as dp[i][-1]
+//     dp[i][-1] = 1(0 itself)+dp[i-1][0] + dp[i-1][-1] = i - dp[i-1][1]; 
+    
