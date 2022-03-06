@@ -12,7 +12,7 @@ class Solution {
     }
     private int getLCM(int a, int b) {
         int gcd = getGCD(a, b);
-        return a/gcd * b /gcd;
+        return (a/gcd * b /gcd) * gcd;
     }
     private int gcd(int a, int b) {
         if (a == 0)
