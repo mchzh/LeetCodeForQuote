@@ -1,0 +1,57 @@
+class Solution {
+    public List<List<Integer>> findPrimePairs(int n) {
+        // find all prime <= n
+        // loop this list for x and n-x
+        List<List<Integer>> rets = new ArrayList<>();
+        List<Integer> check = getPrime(n);
+        for (int c : check) {
+            if (c > n/2) break;
+            int pair = n - c;
+            if (isPrime(pair)) {
+                List<Integer> temp = new ArrayList<>();
+                temp.add(c);
+                temp.add(pair);
+                rets.add(temp);
+            }
+        }
+        return rets;
+    }
+
+    private List<Integer> getPrime(int n) {
+        int range = n+1;
+        boolean[] isPrime = new boolean[range];
+        Arrays.fill(isPrime, true);
+        isPrime[0] = false;
+        
+        for (int i = 2; i * i < range; i++) {
+            if (!isPrime[i]) continue;
+            for (int j = i*i; j < range; j+= i) {
+                isPrime[j] = false;
+            }
+        }
+        List<Integer> primelist = new ArrayList<>();
+        int count = 0;
+        for (int i = 2; i < range; i++) {
+            if (isPrime[i]) {
+                primelist.add(i);
+                count++;   
+            }
+        }
+        return primelist;
+  }
+
+  private boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+
+        // Check for divisibility from 2 to the square root of the number
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false; // Number is divisible, not prime
+            }
+        }
+
+        return true; // Number is prime
+    }
+}
