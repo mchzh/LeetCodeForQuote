@@ -18,7 +18,7 @@ class SegTreeNode {
             {
                 left = new SegTreeNode(start, mid, val);
                 right = new SegTreeNode(mid+1, end, val);            
-                info = left.info + right.info;  // check with your own logic
+                info = Math.max(left.info, right.info);  // check with your own logic
             }        
         }
 
@@ -29,7 +29,7 @@ class SegTreeNode {
             this.end = b;
             if (start == end) {
                 info = vals[a];
-                System.out.println(info + " " + start + " " + end);
+                //System.out.println(info + " " + start + " " + end);
                 return;
             }
             int mid = (start+end)/2;
@@ -37,13 +37,13 @@ class SegTreeNode {
              {
                 left = new SegTreeNode(start, mid, vals);
                 right = new SegTreeNode(mid+1, end, vals);            
-                info = left.info + right.info;  // check with your own logic
+                info = Math.max(left.info, right.info);  // check with your own logic
             }  
         }
 
-        private void pushDown()
+        private void pushDown()  // lazy tag
         {
-            if (tag && left == null)
+            if (tag==true && left != null)
             {
                 left.info = info;
                 right.info = info;
@@ -55,36 +55,35 @@ class SegTreeNode {
 
         public int queryRange(int a, int b) { // query the sum over range [a,b]
             if (b < start || a > end) {
-                return 0; // write your logic
+                return Integer.MIN_VALUE/2; // write your logic
             }
-            if (a <= start && b >= end) {
+            if (a <= start && b >= end) { //&& control
                 return info;
             }
 
-            if (left == null) {
+            if (left != null) {
                 pushDown();
                 int ret = Math.max(left.queryRange(a, b), right.queryRange(a, b));
-                info = Math.max(left.info, right.info;);
+                info = Math.max(left.info, right.info);
                 return ret;
             }
         
             return info;
         }
 
-        public void updateRange(int a, int b, int val) {
+        public void updateRange(int a, int b, int val) {       
             if (b < start || a > end) return; // not cover at all
-            if (a <= start || b <= end) { // completely cover [a,b]
+            if (a <= start && b >= end) { // completely cover [a,b]
                 info = val;
                 tag = true;
                 return;
             }
             
-            if (left == null) {
+            if (left != null) {
                 pushDown();
                 left.updateRange(a, b, val);
                 right.updateRange(a, b, val);
                 info = Math.max(left.info, right.info);
-            }
-            
+            } 
         }
     }
